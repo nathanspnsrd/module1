@@ -74,40 +74,17 @@ var form = document["message"];
 form.addEventListener("submit", function(e) {
     e.preventDefault();
     var newMessage = form.input.value;
-    form.newMessage.value = "";
+    form.input.value = "";
 
     var nextMessage = document.createElement("div");
     nextMessage.textContent = newMessage;
     document.getElementsByClassName("messages")[0].append(nextMessage)
-})
 
-/*Lets me add messages in correct order/color
-var messageLeft = document.getElementsByClassName("left");
-var messageRight = document.getElementsByClassName("right");
-var dropDownBar = document.getElementById("theme-drop-down");
-
-const dropDownFunction = dropDownBar.addEventListener("click", function() {
-    if(dropDownBar.value === "theme-one") {
-        for(let i = 0; i < form.length; i++) {
-            if(i % 2 === 0) {
-                messageLeft[i].style.backgroundColor = "cornflowerBlue"
-                messageLeft[i].style.color = "black"
-            } else {
-                messageRight[i].style.backgroundColor = "tan"
-                messageRight[i].style.color = "black"
-            }
-        }
-
-    } else if (dropDownBar.value === "theme-two") {
-        for(let i =0; i < form.length; i++) {
-            if(i % 2 === 0) {
-                messageLeft[i].style.backgroundColor = "black"
-                messageLeft[i].style.color = "white"
-            } else {
-                messageRight[i].style.backgroundColor = "red"
-                messageRight[i].style.color = "black"
-            }
+    for(let i = 0; i < messageBox.length; i++) {
+        if(i % 2 === 0) {
+            nextMessage.classList.add = "left"
+        } else {
+            nextMessage.classList.add = "right"
         }
     }
 })
-*/
