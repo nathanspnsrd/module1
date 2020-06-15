@@ -31,13 +31,15 @@ var messageRightSecond = document.getElementsByClassName("message right")[1];
 messageRightSecond.innerHTML = "Graduating from V School, thanks!";
 
 //Clears content
-var messageBox = document.getElementsByClassName("messages");
+var messageBox = document.getElementsByClassName("messages")[0];
 var clearButton = document.getElementById("clear-button").addEventListener("click", clearsMessages);
 
 function clearsMessages() {
+    
     console.log("The chatbox was cleared");
-    for (i = 0; i < messageBox.length; i++) {
-        messageBox[i].remove();
+    for (var i = messageBox.children.length - 1; i >= 0 ; i--) {
+        console.log(messageBox.children[i])
+        messageBox.children[i].remove();
     }
 }
 
@@ -78,13 +80,36 @@ form.addEventListener("submit", function(e) {
 
     var nextMessage = document.createElement("div");
     nextMessage.textContent = newMessage;
-    document.getElementsByClassName("messages")[0].append(nextMessage)
+    var messageLength = document.getElementsByClassName("messages")[0];
+    messageLength.append(nextMessage);
 
-    for(let i = 0; i < messageBox.length; i++) {
-        if(i % 2 === 0) {
-            nextMessage.classList.add = "left"
+    console.log(messageLength.children.length);
+
+    if(dropDownBar.value === "theme-one") {
+        if(messageLength.children.length % 2 === 0) {
+            nextMessage.classList.add("right");
+            nextMessage.classList.add("message");
+            nextMessage.style.backgroundColor = "tan"
+            nextMessage.style.color = "black"
+
         } else {
-            nextMessage.classList.add = "right"
+            nextMessage.classList.add("left");
+            nextMessage.classList.add("message");
+            nextMessage.style.backgroundColor = "cornflowerBlue";
+            nextMessage.style.color = "black";
+        }
+    } else {
+        if(messageLength.children.length % 2 === 0) {
+            nextMessage.classList.add("right");
+            nextMessage.classList.add("message");
+            nextMessage.style.backgroundColor = "red";
+            nextMessage.style.color = "black";
+
+        } else {
+            nextMessage.classList.add("left");
+            nextMessage.classList.add("message");
+            nextMessage.style.backgroundColor = "black";
+            nextMessage.style.color = "white";
         }
     }
 })
