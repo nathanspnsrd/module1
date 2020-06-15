@@ -5,16 +5,6 @@ function makeBlue() {
     box.style.backgroundColor = "blue"
 }
 
-<<<<<<< HEAD
-=======
-//Makes transparent after actions
-var transparent = document.getElementById("box").addEventListener("mouseleave", makeTransparent);
-
-function makeTransparent() {
-    box.style.backgroundColor = "transparent"
-}
-
->>>>>>> c9be8a667c487abb339bf3e89088d12104871b4a
 //Makes Box Red
 var red = document.getElementById("box").addEventListener("mousedown", makeRed);
 
@@ -41,7 +31,6 @@ var orange = document.addEventListener("scroll", makeOrange)
 
 function makeOrange() {
     box.style.backgroundColor = "orange"
-<<<<<<< HEAD
 }
 
 //Makes transparent after actions except scroll
@@ -68,6 +57,4 @@ function changeClick(e) {
     } else {
         box.style.backgroundColor = "transparent"
     }
-=======
->>>>>>> c9be8a667c487abb339bf3e89088d12104871b4a
 }
