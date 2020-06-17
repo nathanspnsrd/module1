@@ -2,10 +2,16 @@
     text-align: center;
 }
 
+body {
+    background-color: rgb(142, 233, 224);
+}
+
 .main {
     border: 1px solid black;
+    border-radius: 10px;
     width: 50%;
     margin: auto;
+    background-color: wheat;
 }
 
 #add-item {
@@ -13,30 +19,43 @@
 }
 
 .input {
-    width: 100%;
+    width: 80%;
     padding: 12px 20px;
-    margin: 8px 0;
+    margin: 8px;
     display: inline-block;
-    border: 1px solid #ccc;
+    border: 1px solid black;
     border-radius: 4px;
     box-sizing: border-box;
 }
 
-.label {
-    margin: 10px;
+.button {
+    padding: 10px 18px;
 }
 
 #list {
-    flex-direction: column;
-    display: flex;
+    text-align: center;
 }
 
-#list > li{
-    list-style-type: none;
+.liLook {
+    list-style-type: solid circle;
     margin: 10px auto;
 }
 
 #list div {
     margin-bottom: 10px;
     text-align: center;
+}
+
+.itemName {
+    font-size: larger;
+    padding-right: 10px;
+    vertical-align: middle;
+}
+
+.editButton {
+    margin: 0 4px;
+}
+
+#clear-button {
+    margin: 8px;
 }
