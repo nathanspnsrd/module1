@@ -1,5 +1,12 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .title {
     text-align: center;
+    padding: 10px 0;
 }
 
 body {
@@ -38,12 +45,11 @@ body {
 
 .liLook {
     list-style-type: solid circle;
-    margin: 10px auto;
+    margin: 10px 25px;    
 }
 
 #list div {
     margin-bottom: 10px;
-    text-align: center;
 }
 
 .itemName {
@@ -53,9 +59,19 @@ body {
 }
 
 .editButton {
-    margin: 0 4px;
+    padding: 3px;
+    margin: 0 2px;
+}
+
+.deleteButton {
+    padding: 3px;
 }
 
 #clear-button {
     margin: 8px;
+    padding: 5px;
+}
+
+.hidden {
+    display: none;
 }

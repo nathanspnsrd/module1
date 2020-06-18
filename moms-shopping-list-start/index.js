@@ -9,31 +9,37 @@ form.addEventListener("submit", function(e) {
     //Creates li for item
     var nextItem = document.createElement("li");
     var listLength = document.getElementsByClassName("list")[0];
-    listLength.append(nextItem);
     nextItem.classList.add("liLook");
 
     //Creates div for item
     var nextDiv = document.createElement("div");
-    nextItem.append(nextDiv);
-    nextDiv.classList.add("itemDiv");
+    nextDiv.classList.add("itemDiv");  
 
     //Creates span for item
     var nextSpan = document.createElement("span");
     nextSpan.textContent = newItem;
-    nextDiv.append(nextSpan);
     nextSpan.classList.add("itemName");
 
     //Creates Edit Button for item
+    //It would be cool to flex this and the delete button to the end, but I have played with it and can't seem to get it
     var edit = document.createElement("button");
     edit.textContent = "edit";
-    nextDiv.append(edit);
     edit.classList.add("editButton");
+    edit.addEventListener("click", changeButton)
 
     //Creates delete button
     var xButton = document.createElement("button");
     xButton.textContent = "X";
-    nextDiv.append(xButton);
     xButton.classList.add("deleteButton");
+    xButton.addEventListener("click", deleteRow);
+
+    //Appends everything
+    nextDiv.append(nextSpan);
+    nextDiv.append(edit);
+    nextDiv.append(xButton);
+    
+    nextItem.append(nextDiv);
+    listLength.append(nextItem);
 })
 
 //Clears the whole list
@@ -52,26 +58,50 @@ function clearsItems() {
 
 clearButton.addEventListener("click", clearsItems);
 
-/*Deletes item
+//Deletes item
 var deleteItem = document.getElementsByClassName("deleteButton");
 
-function deleteRow () {
-    var rowToDelete = document.getElementsByClassName("itemDiv");
-    var itemLine = document.getElementsByClassName("liLook");
-    itemLine.rowToDelete.remove();
+for (var i = 0; i < deleteItem.length; i++) {
+    deleteItem[i].addEventListener("click", deleteRow);
 }
 
-deleteItem.addEventListener("click", deleteRow);
-*/
+function deleteRow () {
+    this.parentNode.parentNode.remove()
+}
 
-/*Allows user to edit items which are in the list
+//Allows user to edit items which are in the list
 var itemName = document.getElementsByClassName("itemName");
 var editButton = document.getElementsByClassName("editButton");
 
-function editItems () {
-    itemName.createElement("input")
-    itemName.classList.add("input")
+function addInputBox(item) {
+   // for (var i = 0; i < itemName.length; i++) {
+   //     var newInput = document.createElement("input");
+   //     itemName[i].parentNode.prepend(newInput);
+   // }
+   var newInput = document.createElement("input");
+   newInput.value = item.parentNode.children[0].textContent
+   item.parentNode.prepend(newInput)
+   
 }
-editButton.addEventListener("click", editItems)
 
-//Changes save button to edit button */
+//Turns edit button into save button
+function changeButton() {
+    addInputBox(this)
+    var saveButton = document.createElement("button");
+    saveButton.textContent = "Save"
+    this.classList.add("hidden")
+    var editBtn = this
+    saveButton.addEventListener("click", function() {
+        // this.parentNode.children[0] == new input
+
+        this.parentNode.children[1].textContent = this.parentNode.children[0].value
+        editBtn.classList.remove("hidden")
+        this.parentNode.children[0].remove()
+        this.remove()
+    })
+    this.parentNode.insertBefore(saveButton, this)
+}
+
+for (var i = 0; i < editButton.length; i++) {
+    editButton[i].addEventListener("click", changeButton);  
+}
