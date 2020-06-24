@@ -70,20 +70,12 @@ for (var i = 0; i < peopleWhoWantToSeeMadMaxFuryRoad.length; i++) {
 // [1, 1, 1, 1, 3]   // "The light is on"
 // [9, 3, 4, 2]      // "The light is off"
 
-var days = {
-    day1: [3, 5, 6, 697, 24],
-    day2: [93842, 1, 3, 67, 98, 69],
-    day3: [2, 2, 2]
-}
+var toggleTimes = [[3, 5, 6, 697, 24], [93842, 1, 3, 67, 98, 69], [2, 2, 2]]
 
 var sum = 0;
 
-for (var i = 0; i < days["day1"].length; i++) {
-    var newSum = sum += days.day1[i];
-    console.log(newSum)
-    if (newSum % 2 === 0) {
-        console.log("The light is off")
-    } else {
-        console.log("The light is on")
-    }
+for (var i = 0; i < toggleTimes.length; i++) {
+    for (var j = 0; j < toggleTimes[i].length; j++) {
+        console.log(toggleTimes[i][j])
+    } 
 }
