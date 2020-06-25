@@ -14,24 +14,26 @@ function fizzBuzz() {
     }
 }
 
-const arr = fizzBuzz()
-console.log(arr)
+fizzBuzz()
+
+var arr1 = fizzBuzz
 
 let countFizzBuzz = 0
 let countFizz = 0
 let countBuzz = 0
 
-for (var i = 0; i <= arr.length; i++) {
-    if(arr[i] === "fizzbuzz") {
+for (var i = 0; i < arr1.length; i++) {
+    if(arr1[i] === "fizzbuzz") {
         countFizzBuzz += 1
         
-    } else if (arr[i] === "fizz") {
+    } else if (arr1[i] === "fizz") {
         countFizz += 1
         
-    } else if (arr[i] === "buzz") {
+    } else if (arr1[i] === "buzz") {
         countBuzz += 1
     }
 }
+
 console.log ("fizzbuzz: " + countFizzBuzz)
 console.log ("fizz: " + countFizz)
 console.log ("buzz: " + countBuzz)
