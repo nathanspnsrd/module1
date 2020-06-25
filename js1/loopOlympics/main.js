@@ -91,12 +91,22 @@
 
 
 //Gold
+// var newArr = [[]]
+
+// for (var i = 0; i < 3; i++) {
+//     newArr.push([])
+//     for (var j = 0; j < 3; j++) {
+//         newArr[i].push(0)
+//     }
+// }
+// console.log(newArr)
+
 var newArr = [[]]
 
 for (var i = 0; i < 3; i++) {
-    newArr.push([])
+    newArr.push([0, 1, 2])
     for (var j = 0; j < 3; j++) {
-        newArr[i].push(0)
+        newArr[i].push();
     }
 }
 console.log(newArr)

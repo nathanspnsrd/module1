@@ -13,10 +13,6 @@ js 1 --
 Loop Olympics
 How do I use nested for loops to make the grid?
 
-Loop practice
-Optional
-How do I use a nested loop to do this?
-
 String methods
 Still need help with split and join in this instance.
 
@@ -24,6 +20,3 @@ Still need help with split and join in this instance.
 debugging1 --
 Problem solving
 How to find char in str?
-
-Fizzbuzz
-Why am i getting undefined?

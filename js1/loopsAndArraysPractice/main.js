@@ -75,7 +75,15 @@ var toggleTimes = [[3, 5, 6, 697, 24], [93842, 1, 3, 67, 98, 69], [2, 2, 2]]
 var sum = 0;
 
 for (var i = 0; i < toggleTimes.length; i++) {
-    for (var j = 0; j < toggleTimes.length; j++) {
-        console.log(toggleTimes[i][j])
-    } 
+  var sum = toggleTimes[i].reduce(function(a, b) {
+    return a + b
+  }, 0)
+  console.log(sum)
+  if(sum % 2 === 0) {
+    console.log("The ligth is off.")
+  } else {
+    console.log("The light is on.")
+  }
+    for (var j = 0; j < 3; j++) {
+    }
 }
