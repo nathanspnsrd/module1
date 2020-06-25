@@ -25,12 +25,14 @@ console.log("vegetables: ", vegetables);
 //7
 var food = fruit.concat(vegetables)
 
-//8
-food.splice(4, 2)
+food.splice(4, 2).join().reverse()
 
-//9
-food.reverse()
+// //8
+// food.splice(4, 2)
 
-//10
-food.join()
+// //9
+// food.reverse()
+
+// //10
+// food.join()
 console.log(food)

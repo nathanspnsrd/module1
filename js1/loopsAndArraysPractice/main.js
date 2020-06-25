@@ -7,9 +7,9 @@ var count = 0
 for (var i = 0; i <= officeItems.length; i++) {
     if(officeItems[i] === "computer") {
         count += 1
-        console.log (count)
     }
 }
+console.log (count)
 
 //#2
 //Loop through the following array and log to the console "old enough" if they 
@@ -75,7 +75,7 @@ var toggleTimes = [[3, 5, 6, 697, 24], [93842, 1, 3, 67, 98, 69], [2, 2, 2]]
 var sum = 0;
 
 for (var i = 0; i < toggleTimes.length; i++) {
-    for (var j = 0; j < toggleTimes[i].length; j++) {
+    for (var j = 0; j < toggleTimes.length; j++) {
         console.log(toggleTimes[i][j])
     } 
 }

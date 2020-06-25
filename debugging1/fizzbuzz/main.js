@@ -1,0 +1,37 @@
+function fizzBuzz() {
+    for (var i = 0; i <= 100; i++) {
+        if(i % 3 === 0 && i % 5 === 0) {
+            console.log("fizzbuzz")
+            continue;
+        } else if (i % 3 === 0) {
+            console.log("fizz")
+            continue;
+        } else if (i % 5 === 0) {
+            console.log("buzz")
+            continue;
+        }
+        console.log(i)
+    }
+}
+
+const arr = fizzBuzz()
+console.log(arr)
+
+let countFizzBuzz = 0
+let countFizz = 0
+let countBuzz = 0
+
+for (var i = 0; i <= arr.length; i++) {
+    if(arr[i] === "fizzbuzz") {
+        countFizzBuzz += 1
+        
+    } else if (arr[i] === "fizz") {
+        countFizz += 1
+        
+    } else if (arr[i] === "buzz") {
+        countBuzz += 1
+    }
+}
+console.log ("fizzbuzz: " + countFizzBuzz)
+console.log ("fizz: " + countFizz)
+console.log ("buzz: " + countBuzz)

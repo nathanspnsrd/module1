@@ -6,7 +6,7 @@ var result = []
 
 function forception(people, alphabetArr){
     for(let i = 0; i < people.length; i++){
-        result.push(people[i])
+        result.push(people[i] + ":")
         for (let j = 0; j < alphabetArr.length; j++){
             result.push(alphabetArr[j])
         }

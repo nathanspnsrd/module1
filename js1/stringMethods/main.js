@@ -1,44 +1,54 @@
 var hello = "Hello"
 var helloWorld = "Hello World"
 
-function capitalizeAndLowercase("Hello") {
-    var upper = this.toUpperCase();
-    var lower = this.toLowerCase();
+function capitalizeAndLowercase(string) {
+    var upper = string.toUpperCase();
+    var lower = string.toLowerCase();
     var putTogether = upper + lower
     console.log(putTogether)
 }
 
-capitalizeAndLowercase()
+capitalizeAndLowercase(hello)
+capitalizeAndLowercase(helloWorld)
 
-function findMiddleIndex() {
-    var middle = (helloWorld.length / 2)
+function findMiddleIndex(string) {
+    var middle = (string.length / 2)
     var roundedMiddle = Math.floor(middle)
     console.log(roundedMiddle)
 }
 
-findMiddleIndex()
+findMiddleIndex(hello)
+findMiddleIndex(helloWorld)
 
-function returnFirstHalf() {
-    var middle = (hello.length / 2)
+function returnFirstHalf(string) {
+    var middle = (string.length / 2)
     var roundedMiddle = Math.floor(middle)
-    var firstHalf = hello.slice(0, roundedMiddle)
+    var firstHalf = string.slice(0, roundedMiddle)
     console.log(firstHalf)
 }
 
-returnFirstHalf()
+returnFirstHalf(hello)
+returnFirstHalf(helloWorld)
 
-function capitalizeAtHelf() {
-    var middle = (helloWorld.length / 2)
+function capitalizeAtHelf(string) {
+    var middle = (string.length / 2)
     var roundedMiddle = Math.floor(middle)
-    var firstHalf = helloWorld.slice(0, roundedMiddle)
-    var secondHalf = helloWorld.slice(roundedMiddle, roundedMiddle.length)
+    var firstHalf = string.slice(0, roundedMiddle)
+    var secondHalf = string.slice(roundedMiddle, roundedMiddle.length)
     var upperCase = firstHalf.toUpperCase()
     var lowerCase = secondHalf.toLowerCase()
     console.log(upperCase + lowerCase)
 }
 
-capitalizeAtHelf()
+capitalizeAtHelf(hello)
+capitalizeAtHelf(helloWorld)
 
-function capitalizeEveryOther() {
-
+function capitalizeAfterSpace(string) {
+    for (var i = 0; i < string.length; i++) {
+        var words = string.split(" ")
+        var newString = words[0].toUpperCase;
+        console.log(newString);
+    }
 }
+
+capitalizeAfterSpace("what are you doing?")

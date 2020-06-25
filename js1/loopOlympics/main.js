@@ -38,7 +38,7 @@ console.log(fruitArr)
 */
 
 //Silver
-/*var peopleArray = [
+var peopleArray = [
     {
       name: "Harrison Ford",
       occupation: "Actor"
@@ -85,10 +85,10 @@ for (var i = 0; i < peopleArray.length; i++) {
         everyOtherOccupation.push(peopleArray[i].occupation)
     }
 }
+peopleArray.push(everyOtherName);
+peopleArray.push(everyOtherOccupation);
+console.log(peopleArray);
 
-console.log(everyOtherName);
-console.log(everyOtherOccupation);
-*/
 
 //Gold
 var newArr = []
