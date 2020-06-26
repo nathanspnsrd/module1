@@ -43,19 +43,33 @@
 // capitalizeAtHelf(hello)
 // capitalizeAtHelf(helloWorld)
 
+// function capitalizeAfterSpace(string) {
+//     for (var i = 0; i < string.length; i++) {
+//         var words = string.split(" ")
+//         for (var j = 0; j < words.length; j++) {
+//             var newString = words[j].split("")
+//             var capitalizeFirst = newString[0].toUpperCase()
+//             newString.splice(0, 1, capitalizeFirst)
+//             var wholeWord = newString.join("")
+//         }    
+//     } 
+//     //console.log(words);
+//     //console.log(newString);
+//     console.log(wholeWord);
+// }
+
 function capitalizeAfterSpace(string) {
-    for (var i = 0; i < string.length; i++) {
-        var words = string.split(" ")
-        for (var j = 0; j < words.length; j++) {
-            var newString = words[j].split("")
-            var capitalizeFirst = newString[0].toUpperCase()
-            newString.splice(0, 1, capitalizeFirst)
-            var wholeWord = newString.join("")
-        }    
+    var wholeWord = ''
+    var wholeSentence = []
+    var words = string.split(" ") 
+    for (var i = 0; i < words.length; i++) {
+        var capitalizeFirst = words[i][0].toUpperCase() 
+        var partWord = words[i].slice(1, words[i].length)
+        wholeWord = capitalizeFirst + partWord
+        wholeSentence.push(wholeWord)
     } 
-    //console.log(words);
-    //console.log(newString);
-    console.log(wholeWord);
+    wholeSentence = wholeSentence.join(" ")
+    console.log(wholeSentence)
 }
 
 capitalizeAfterSpace("what are you doing?")

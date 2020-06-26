@@ -101,12 +101,35 @@
 // }
 // console.log(newArr)
 
-var newArr = [[]]
+// var newArr = []
+
+// for (var i = 0; i < 3; i++) {
+//     newArr.push([0, 1, 2])
+//     for (var j = 0; j < 3; j++) {
+//         newArr[i].push();
+//     }
+// }
+
+// console.log(newArr)
+
+// var newArr = []
+
+// for (var i = 0; i < 3; i++) {
+//     newArr.push([])
+//     for (var j = 0; j < 3; j++) {
+//         newArr[i].push(i);
+//     }
+// }
+
+// console.log(newArr)
+
+var newArr = []
 
 for (var i = 0; i < 3; i++) {
-    newArr.push([0, 1, 2])
+    newArr.push([])
     for (var j = 0; j < 3; j++) {
-        newArr[i].push();
+        newArr[i].push("x");
     }
 }
+
 console.log(newArr)
