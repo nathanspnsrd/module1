@@ -14,7 +14,7 @@ let jo = ["Jo", 55, "Sword", 253];
 let bob = ["Bob", 139, "Noodle", 769];
 let annie = ["Annie", 1000, "Colt 1911!", 10000];
 var newEnyName = [];
-var newEnyHP = 
+var newEnyHP 
 
 
 //Instructions
@@ -37,7 +37,8 @@ function walk() {
             keepWalking() 
         }
     } else if (walk === "Print") {
-        console.log("Your name: " + name + ", HP: " + hp + "," + " Your inventory: " + inventory + " You have killed: " + namesOfDead)
+        let inventoryStr = inventory.join(", ")
+        console.log("Your name: " + name + ", HP: " + hp + "," + " Your inventory: " + inventoryStr + " You have killed: " + namesOfDead)
         keepWalking()
     } else {
         console.log("Please follow the instructions.")
@@ -59,7 +60,8 @@ function keepWalking() {
             keepWalking()  
         }
     } else if (walk === "Print") {
-        console.log("Your name: " + name + ", HP: " + hp + "," + " Your inventory: " + inventory + " You have killed: " + namesOfDead)
+        let inventoryStr = inventory.join(", ")
+        console.log("Your name: " + name + ", HP: " + hp + "," + " Your inventory: " + inventoryStr + " You have killed: " + namesOfDead)
         keepWalking()
     } else {
         console.log("Please follow the instructions.")
@@ -127,7 +129,7 @@ function attackOrRun() {
         enemyDamage()
         attackOrRunInside()
     } else if (decision === "Print") {
-        console.log("Your name: " + name + ", HP: " + hp + "," + " Your inventory: " + inventory + " You have killed: " + namesOfDead)
+        console.log("Your name: " + name + ", HP: " + hp + "," + " Your inventory: " + inventory.join(", ") + " You have killed: " + namesOfDead)
         attackOrRunInside()
     } else {
         console.log("Please follow the instructions.")
@@ -155,7 +157,7 @@ function attackOrRunInside() {
         enemyDamage()
         attackOrRun()
     } else if (decision === "Print") {
-        console.log("Your name: " + name + ", HP: " + hp + "," + " Your inventory: " + inventory + " You have killed: " + namesOfDead)
+        console.log("Your name: " + name + ", HP: " + hp + "," + " Your inventory: " + inventory.join(", ") + " You have killed: " + namesOfDead)
         attackOrRun()
     } else {
         console.log("Please follow the instructions.")
@@ -204,17 +206,15 @@ function enemyDied() {
         hp = newHP
         console.log(inventory)
         console.log(namesOfDead)
+        keepWalking()
     }
 }
 
-
-//Need to join inventory and namesOfDead arrays to a string
 
 //store subtracted enemy hp
 
 /*Make function if enemy dies
 -needs to get rid of enemies as they are killed
--ensure we keep walking
 */
 
 walk()
