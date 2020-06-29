@@ -4,7 +4,7 @@ console.log("Welcome to the Colossal adventure!");
 //Our info
 const readline = require("readline-sync");
 const name = readline.question("What is your name? ");
-let hp = 100;
+let hp = 135;
 let inventory = [];
 let namesOfDead = [];
 
@@ -15,6 +15,7 @@ let bob = ["Bob", 139, "Noodle", 769];
 let annie = ["Annie", 1000, "Colt 1911!", 10000];
 var newEnyName = [];
 var newEnyHP = 
+
 
 //Instructions
 console.log(name + ", thank you for joining.");
@@ -36,7 +37,7 @@ function walk() {
             keepWalking() 
         }
     } else if (walk === "Print") {
-        console.log("Your name: " + name + ", HP: " + hp + "," + " Your inventory: " + inventory + "You have killed: " + namesOfDead)
+        console.log("Your name: " + name + ", HP: " + hp + "," + " Your inventory: " + inventory + " You have killed: " + namesOfDead)
         keepWalking()
     } else {
         console.log("Please follow the instructions.")
@@ -58,7 +59,7 @@ function keepWalking() {
             keepWalking()  
         }
     } else if (walk === "Print") {
-        console.log("Your name: " + name + ", HP: " + hp + "," + " Your inventory: " + inventory + "You have killed: " + namesOfDead)
+        console.log("Your name: " + name + ", HP: " + hp + "," + " Your inventory: " + inventory + " You have killed: " + namesOfDead)
         keepWalking()
     } else {
         console.log("Please follow the instructions.")
@@ -75,6 +76,10 @@ function enemies() {
         newEnyName = enemyName
         let enyHP = jo[1]
         thisEnyHP = enyHP
+        let enemyItm = jo[2]
+        newEnyItm = enemyItm
+        let enemyPlusHP = jo[3]
+        newEnyPlusHP = enemyPlusHP
         console.log(enemyName + " appeard")
         attackOrRun()
     } else if (enemy === 1) {
@@ -82,6 +87,10 @@ function enemies() {
         newEnyName = enemyName
         let enyHP = bob[1]
         thisEnyHP = enyHP
+        let enemyItm = bob[2]
+        newEnyItm = enemyItm
+        let enemyPlusHP = bob[3]
+        newEnyPlusHP = enemyPlusHP
         console.log(enemyName + " appeard")
         attackOrRun()
     } else if(enemy === 2) {
@@ -89,6 +98,10 @@ function enemies() {
         newEnyName = enemyName
         let enyHP = annie[1]
         thisEnyHP = enyHP
+        let enemyItm = annie[2]
+        newEnyItm = enemyItm
+        let enemyPlusHP = annie[3]
+        newEnyPlusHP = enemyPlusHP
         console.log(enemyName + " appeard")
         attackOrRun()
     }
@@ -114,7 +127,7 @@ function attackOrRun() {
         enemyDamage()
         attackOrRunInside()
     } else if (decision === "Print") {
-        console.log("Your name: " + name + ", HP: " + hp + "," + " Your inventory: " + inventory + "You have killed: " + namesOfDead)
+        console.log("Your name: " + name + ", HP: " + hp + "," + " Your inventory: " + inventory + " You have killed: " + namesOfDead)
         attackOrRunInside()
     } else {
         console.log("Please follow the instructions.")
@@ -142,7 +155,7 @@ function attackOrRunInside() {
         enemyDamage()
         attackOrRun()
     } else if (decision === "Print") {
-        console.log("Your name: " + name + ", HP: " + hp + "," + " Your inventory: " + inventory + "You have killed: " + namesOfDead)
+        console.log("Your name: " + name + ", HP: " + hp + "," + " Your inventory: " + inventory + " You have killed: " + namesOfDead)
         attackOrRun()
     } else {
         console.log("Please follow the instructions.")
@@ -153,12 +166,13 @@ function attackOrRunInside() {
 
 //Determines enemy damage
 function enemyDamage() {
-    var damagePoints = Math.floor(Math.random() * 101)
+    var damagePoints = Math.floor(Math.random() * 145)
     console.log(newEnyName + " just dealt " + damagePoints + " point(s) of damage to you.")
     var newHP = (hp - damagePoints)
     hp = newHP
     youDied()
 }
+
 
 //Ends the script if you die
 function youDied () {
@@ -168,9 +182,10 @@ function youDied () {
     }
 }
 
+
 //Determines friendly damage
 function friendlyDamage() {
-    var damagePoints = Math.floor(Math.random() * 101)
+    var damagePoints = Math.floor(Math.random() * 145)
     console.log(name + ", you just dealt " + damagePoints + " point(s) of damage to " + newEnyName + ".")
     var newEnyHP = (thisEnyHP - damagePoints)
     thisEnyHP = newEnyHP
@@ -178,25 +193,28 @@ function friendlyDamage() {
     enemyDied()
 }
 
+
 //Function for if the enemy is killed
 function enemyDied() {
     if (thisEnyHP <= 0) {
-        console.log("You just killed " + newEnyName + "good job! Please continue on your adventure.")
+        console.log("You just killed " + newEnyName + " good job! Please continue on your adventure.")
+        inventory.push(newEnyItm)
         namesOfDead.push(newEnyName)
+        var newHP = (hp + newEnyPlusHP)
+        hp = newHP
+        console.log(inventory)
+        console.log(namesOfDead)
     }
 }
 
-//Need to push the inventory and namesOfDead arrays to a string
+
+//Need to join inventory and namesOfDead arrays to a string
 
 //store subtracted enemy hp
 
 /*Make function if enemy dies
 -needs to get rid of enemies as they are killed
--add hp to me
--add inventory to me
 -ensure we keep walking
--push the name of dead enemy to our print
--console.log("You just killed " + newEnyName + "good job! Please continue on your adventure.")
 */
 
 walk()
