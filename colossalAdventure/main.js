@@ -1,20 +1,16 @@
 console.log("Welcome to the Colossal adventure!");
 
 
-//Our info
+//Your info
 const readline = require("readline-sync");
 const name = readline.question("What is your name? ");
-let hp = 135;
-let inventory = [];
-let namesOfDead = [];
 
-
-//Enemy info ["name", hp, "inventory item", hp recieved if they die]
-let jo = ["Jo", 55, "Sword", 253];
-let bob = ["Bob", 139, "Noodle", 769];
-let annie = ["Annie", 1000, "Colt 1911!", 10000];
-var newEnyName = [];
-var newEnyHP 
+let yourInfo = {
+    yourName: name,
+    hp: 135,
+    inventory: [],
+    enemiesKilled: [],
+}
 
 
 //Instructions
@@ -24,197 +20,148 @@ console.log("If you kill an enemy you will gain HP.");
 console.log("Type 'Print' into the console at any time to see your: name, HP, and inventory.");
 
 
+//Enemy info
+let jo = {
+    name: "Jo", 
+    hp: 55, 
+    inventoryItem: "Sword", 
+    hpDeathBonus: 253,
+}
+
+let bob = {
+    name: "Bob", 
+    hp: 139, 
+    inventoryItem: "Noodle", 
+    hpDeathBonus: 769,
+}
+
+let annie = {
+    name: "Annie",
+    hp: 1000,
+    inventoryItem: "Colt 1911!",
+    hpDeathBonus: 10000,
+}
+
+let enemies = [jo, bob, annie]
+let filteredEnemies = enemies
+let encounteredEnemy = enemies[0]
+
+
+//Chooses what enemy if an enemy is encountered
+function chooseEnemyToEncounter() {
+    let randomIndex = Math.floor(Math.random() * filteredEnemies.length)
+    return filteredEnemies[randomIndex]
+}
+
+//Allows us to keep calling the walk function
+while (yourInfo.hp > 0) {
+    walk()
+}
+
+
 //Our primary function
 function walk() {
     const walk = readline.question("Please press 'w' to walK. ")
     if(walk === "w") {
         var number = Math.floor(Math.random() * 4)
         if (number === 1) {
-            enemies()
-            attackOrRun()
+            encounteredEnemy = chooseEnemyToEncounter()
+            console.log(encounteredEnemy.name + " appeard")
+            //attackOrRun()
+            battle()
         } else {
-            console.log("Keep Walking")  
-            keepWalking() 
+            console.log("Keep Walking")   
         }
     } else if (walk === "Print") {
-        let inventoryStr = inventory.join(", ")
-        console.log("Your name: " + name + ", HP: " + hp + "," + " Your inventory: " + inventoryStr + " You have killed: " + namesOfDead)
-        keepWalking()
+        console.log("Your name: " + name + ", HP: " + yourInfo.hp + "," + " Your inventory: " + yourInfo.inventory.join(", ") + " You have killed: " + yourInfo.enemiesKilled.join(", "))
     } else {
         console.log("Please follow the instructions.")
-        keepWalking()
     }
 }
 
-
-//Allows us to continue if an enemy is not encountered (mirrors the primary function, but happens behind the scenes)
-function keepWalking() {
-    const walk = readline.question("Please press 'w' to walK. ")
-    if(walk === "w") {
-        var number = Math.floor(Math.random() * 4)
-        if (number === 1) {
-            enemies()
-            attackOrRun()
+//Allows us to continue the battle based on specific inputs
+function battle() {
+    while (encounteredEnemy.hp > 0) { 
+        let decision = readline.question("Would you like to attack or run? (Please type your response.) ")
+        if (decision === "run") {
+            var randomChance = Math.floor(Math.random() * 2)
+            if (randomChance === "0") {
+                attack()
+            } else {
+                damageToEnemy()
+                console.log("You escaped! Keep walking.")
+            }
+        } else if (decision === "attack") {
+            attack()
+        } else if (decision === "Print") {
+            console.log("Your name: " + name + ", HP: " + yourInfo.hp + "," + " Your inventory: " + yourInfo.inventory.join(", ") + " You have killed: " + yourInfo.enemiesKilled.join(", "))
         } else {
-            console.log("Keep Walking")  
-            keepWalking()  
+            console.log("Please follow the instructions.")
         }
-    } else if (walk === "Print") {
-        let inventoryStr = inventory.join(", ")
-        console.log("Your name: " + name + ", HP: " + hp + "," + " Your inventory: " + inventoryStr + " You have killed: " + namesOfDead)
-        keepWalking()
-    } else {
-        console.log("Please follow the instructions.")
-        keepWalking()
+        if (encounteredEnemy.hp === 0 || decision === "run") {
+            break
+        }
     }
 }
 
 
-//Carries out if enemy is encountered
-function enemies() {
-    var enemy = Math.floor(Math.random() * 3);
-    if (enemy === 0) {
-        let enemyName = jo[0]
-        newEnyName = enemyName
-        let enyHP = jo[1]
-        thisEnyHP = enyHP
-        let enemyItm = jo[2]
-        newEnyItm = enemyItm
-        let enemyPlusHP = jo[3]
-        newEnyPlusHP = enemyPlusHP
-        console.log(enemyName + " appeard")
-        attackOrRun()
-    } else if (enemy === 1) {
-        let enemyName = bob[0]
-        newEnyName = enemyName
-        let enyHP = bob[1]
-        thisEnyHP = enyHP
-        let enemyItm = bob[2]
-        newEnyItm = enemyItm
-        let enemyPlusHP = bob[3]
-        newEnyPlusHP = enemyPlusHP
-        console.log(enemyName + " appeard")
-        attackOrRun()
-    } else if(enemy === 2) {
-        let enemyName = annie[0]
-        newEnyName = enemyName
-        let enyHP = annie[1]
-        thisEnyHP = enyHP
-        let enemyItm = annie[2]
-        newEnyItm = enemyItm
-        let enemyPlusHP = annie[3]
-        newEnyPlusHP = enemyPlusHP
-        console.log(enemyName + " appeard")
-        attackOrRun()
-    }
+//If attack is chosen
+function attack() {
+    console.log("You chose to attack")
+    damageToYou()
+    damageToEnemy()
 }
 
 
-//Asks to attack or run
-function attackOrRun() {
-    let decision = readline.question("Would you like to attack or run? (Please type your response.) ")
-    if (decision === "run") {
-        var randomChance = Math.floor(Math.random() * 2)
-        if (randomChance === "0") {
-            friendlyDamage()
-            enemyDamage()
-            attackOrRunInside()
-        } else {
-            enemyDamage()
-            console.log("You escaped! Keep walking.")
-            keepWalking()
-        }
-    } else if (decision === "attack") {
-        friendlyDamage()
-        enemyDamage()
-        attackOrRunInside()
-    } else if (decision === "Print") {
-        console.log("Your name: " + name + ", HP: " + hp + "," + " Your inventory: " + inventory.join(", ") + " You have killed: " + namesOfDead)
-        attackOrRunInside()
-    } else {
-        console.log("Please follow the instructions.")
-        attackOrRunInside()
-    }
-}
-
-
-//Allows us to call the attack or run function inside of itself
-function attackOrRunInside() {
-    let decision = readline.question("Would you like to attack or run? (Please type your response.) ")
-    if (decision === "run") {
-        var randomChance = Math.floor(Math.random() * 2)
-        if (randomChance === "0") {
-            friendlyDamage()
-            enemyDamage()
-            attackOrRun()
-        } else {
-            enemyDamage()
-            console.log("You escaped! Keep walking.")
-            keepWalking()
-        }
-    } else if (decision === "attack") {
-        friendlyDamage()
-        enemyDamage()
-        attackOrRun()
-    } else if (decision === "Print") {
-        console.log("Your name: " + name + ", HP: " + hp + "," + " Your inventory: " + inventory.join(", ") + " You have killed: " + namesOfDead)
-        attackOrRun()
-    } else {
-        console.log("Please follow the instructions.")
-        attackOrRun()
-    }
+//Determines friendly damage
+function damageToYou() {
+    var damagePoints = Math.floor(Math.random() * 145)
+    console.log(name + ", you just dealt " + damagePoints + " point(s) of damage to " + encounteredEnemy.name + ".")
+    encounteredEnemy.hp = (encounteredEnemy.hp - damagePoints)
+    enemyDied()
 }
 
 
 //Determines enemy damage
-function enemyDamage() {
-    var damagePoints = Math.floor(Math.random() * 145)
-    console.log(newEnyName + " just dealt " + damagePoints + " point(s) of damage to you.")
-    var newHP = (hp - damagePoints)
-    hp = newHP
-    youDied()
+function damageToEnemy() {
+    if (encounteredEnemy.hp > 0) {
+        var damagePoints = Math.floor(Math.random() * 145)
+        console.log(encounteredEnemy.name + " just dealt " + damagePoints + " point(s) of damage to you.")
+        yourInfo.hp = (yourInfo.hp - damagePoints)
+        youDied()
+    }
 }
 
 
-//Ends the script if you die
+//Ends the script if you died
 function youDied () {
-    if (hp <= 0) {
+    if (yourInfo.hp <= 0) {
         console.log("You just died. Go pitty yourself and then try again.")
         process.exit(-1)    
     }
 }
 
 
-//Determines friendly damage
-function friendlyDamage() {
-    var damagePoints = Math.floor(Math.random() * 145)
-    console.log(name + ", you just dealt " + damagePoints + " point(s) of damage to " + newEnyName + ".")
-    var newEnyHP = (thisEnyHP - damagePoints)
-    thisEnyHP = newEnyHP
-    console.log(thisEnyHP)
-    enemyDied()
-}
-
-
 //Function for if the enemy is killed
 function enemyDied() {
-    if (thisEnyHP <= 0) {
-        console.log("You just killed " + newEnyName + " good job! Please continue on your adventure.")
-        inventory.push(newEnyItm)
-        namesOfDead.push(newEnyName)
-        var newHP = (hp + newEnyPlusHP)
-        hp = newHP
-        console.log(inventory)
-        console.log(namesOfDead)
-        keepWalking()
+    if (encounteredEnemy.hp <= 0) {
+        console.log("You just killed " + encounteredEnemy.name + " good job! Please continue on your adventure.")
+        yourInfo.hp = (yourInfo.hp + encounteredEnemy.hpDeathBonus)
+        yourInfo["inventory"].push(encounteredEnemy.inventoryItem)
+        yourInfo["enemiesKilled"].push(encounteredEnemy.name)
+        filteredEnemies = enemies.filter(enemy => enemy.hp > 0)
+        youWon()
     }
 }
 
 
-//store subtracted enemy hp
+//Ends the game if you win
+function youWon() {
+    if (filteredEnemies.length === 0) {
+        console.log("You won the game, go have a beer and celebrate!")
+        process.exit(-1) 
+    }
+}
 
-/*Make function if enemy dies
--needs to get rid of enemies as they are killed
-*/
 
 walk()
