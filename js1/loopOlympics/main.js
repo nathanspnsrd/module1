@@ -123,6 +123,8 @@
 
 // console.log(newArr)
 
+
+// There is no spoon
 var newArr = []
 
 for (var i = 0; i < 3; i++) {
