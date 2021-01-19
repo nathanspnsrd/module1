@@ -53,6 +53,7 @@ function chooseEnemyToEncounter() {
     return filteredEnemies[randomIndex]
 }
 
+
 //Allows us to keep calling the walk function
 while (yourInfo.hp > 0) {
     walk()
@@ -78,6 +79,7 @@ function walk() {
         console.log("Please follow the instructions.")
     }
 }
+
 
 //Allows us to continue the battle based on specific inputs
 function battle() {
@@ -115,7 +117,7 @@ function attack() {
 
 //Determines friendly damage
 function damageToYou() {
-    var damagePoints = Math.floor(Math.random() * 145)
+    let damagePoints = Math.floor(Math.random() * 145)
     console.log(name + ", you just dealt " + damagePoints + " point(s) of damage to " + encounteredEnemy.name + ".")
     encounteredEnemy.hp = (encounteredEnemy.hp - damagePoints)
     enemyDied()
@@ -125,7 +127,7 @@ function damageToYou() {
 //Determines enemy damage
 function damageToEnemy() {
     if (encounteredEnemy.hp > 0) {
-        var damagePoints = Math.floor(Math.random() * 145)
+        let damagePoints = Math.floor(Math.random() * 145)
         console.log(encounteredEnemy.name + " just dealt " + damagePoints + " point(s) of damage to you.")
         yourInfo.hp = (yourInfo.hp - damagePoints)
         youDied()

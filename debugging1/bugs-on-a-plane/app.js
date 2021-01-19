@@ -13,6 +13,7 @@ function formAlert() {
     for(let i = 0; i < diet.length; i++){
         if(diet[i].checked){
             dietItems.push(diet[i].value)
+            dietItems.join(", ")
         }
     }
     alert("First Name: " + firstName + "\nLast Name: " + lastName + "\nAge: " + age + "\nGender: " + gender + "\nTravel Location: " + location + "\nDiet: " + dietItems + "\nAwesome, now if you die, it won't be an accident..");

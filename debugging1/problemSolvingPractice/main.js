@@ -19,7 +19,7 @@ const string = ["#3", "$$$", "C%4!", "Hey!"];
 const char = "$";
 
 function lettersWithStrings(string, char) {
-    for (var i = 0; i <= string.length; i++) {
+    for (var i = 0; i < string.length; i++) {
         var hasIt = string[i].includes(char)
         if(hasIt === true) {
             console.log(string[i])
