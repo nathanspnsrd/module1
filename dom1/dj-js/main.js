@@ -1,3 +1,6 @@
+// Another test of CodeSandbox to provide code feedback
+// Keep up the good work!
+
 //Makes box blue
 var blue = document.getElementById("box").addEventListener("mouseover", makeBlue);
 
